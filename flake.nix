@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:cachix/devenv-nixpkgs/rolling";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-24.05";
     systems.url = "github:nix-systems/default";
     devenv.url = "github:cachix/devenv";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
@@ -44,9 +44,8 @@
                     pkgs.xorg.libXi
                     pkgs.libxkbcommon
                     pkgs.vulkan-loader
-                    pkgs.wayland
-                    pkgs.mesa
-                    pkgs.mesa.drivers
+                    pkgs-unstable.mesa
+                    pkgs-unstable.mesa.drivers
 
                     pkgs-unstable.alsa-lib.dev
                     pkgs-unstable.libudev-zero
@@ -70,11 +69,10 @@
                       pkgs.xorg.libXi
                       pkgs.libxkbcommon
                       pkgs.vulkan-loader
-                      pkgs.wayland
-                      pkgs.mesa
-                      pkgs.mesa.drivers
+                      pkgs-unstable.mesa
+                      pkgs-unstable.mesa.drivers
                     ]}"
-                    export LIBGL_DRIVERS_PATH=${pkgs.mesa.drivers}/lib/dri
+                    export LIBGL_DRIVERS_PATH=${pkgs-unstable.mesa.drivers}/lib/dri
                     export __GLX_VENDOR_LIBRARY_NAME=mesa
                   '';
 
